@@ -4,7 +4,7 @@ import { nodeResolve } from '@rollup/plugin-node-resolve';
 import { camelize } from '@vue/shared';
 const pkg = require('./package.json');
 
-function pascal(name: string) {
+function pascal(name) {
   if (!name.startsWith('-')) name = '-' + name
   return camelize(name)
 }
