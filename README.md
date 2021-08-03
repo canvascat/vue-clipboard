@@ -1,15 +1,18 @@
-# vue-clipboard
+# vue-clipboard-next
 
 A simple vue3 binding for clipboard.js
 
-
 ## Usage
+```
+npm i vue-clipboard-next
+yarn add vue-clipboard-next
+```
 
 For vue-cli user:
 
 ```js
 import { createApp } from 'vue'
-import VueClipboard from 'vue-clipboard'
+import VueClipboard from 'vue-clipboard-next'
 import App from './App.vue'
 
 createApp(App).use(VueClipboard).mount('#app')
@@ -21,6 +24,6 @@ createApp(App).use(VueClipboard).mount('#app')
 <script>
 Vue.createApp({
   // ...
-}).use(vueClipboard.default)
+}).use(VueClipboardNext.default)
 </script>
 ```
