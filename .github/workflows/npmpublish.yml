@@ -7,18 +7,23 @@ on:
     branches: main
 
 jobs:
-  build&publish:
+  build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v1
         with:
           node-version: 12
-      - name: build
-        run: |
-          yarn
-          yarn build
-      - name: NPM Publish
+      - run: yarn
+      - run: yarn build
+  publish:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 12
       - uses: JS-DevTools/npm-publish@v1
         with:
           token: ${{ secrets.NPM_TOKEN }}
