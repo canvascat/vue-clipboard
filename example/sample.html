@@ -1,0 +1,43 @@
+  
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>vue-clipboard sample app</title>
+  <script src="https://unpkg.com/vue@next"></script>
+  <script src="../lib/vue-clipboard.umd.js"></script>
+</head>
+<body>
+<div id="app">
+  <input type="text" v-model="message">
+  <button type="button"
+    v-clipboard:copy="message"
+    v-clipboard:success="done">Copy!</button>
+    <button type="button"
+      @click="doCopy">doCopy!</button>  
+</div>
+</body>
+<script>
+Vue.createApp({
+  data() {
+    return {
+      message: 'Copy These Text',
+    };
+  },
+  methods: {
+    done () {
+      alert('Copied!')
+    },
+    doCopy () {
+      this.$copyText(this.message).then(function (e) {
+        alert('Copied')
+        console.log(e)
+      }, function (e) {
+        alert('Can not copy')
+        console.log(e)
+      })
+    }
+  }
+}).use(vueClipboard.default).mount("#app");
+</script>
+</html>
